@@ -1,21 +1,16 @@
 import * as React from 'react'
-import { ServerSideStream } from '../Service/server-side-stream'
-import { toggleBackgroundClass,removeErrorClass } from '../common/style-helpers'
-
+import work from 'webworkify-webpack'
 
 export const LiveUpdates = props => {
-  const startLiveUpdatesActionHandler = () =>
-    ServerSideStream.createNewInstance()
-      .startLiveUpdates()
-      .registerErrorHandler(_ => toggleBackgroundClass("error-class"))
-      .registerMessageHandler(m => {
-        removeErrorClass()
-        let data = JSON.parse(m.data)
-        console.log('Data received : ', data)
-      })
+  const startLiveUpdatesActionHandler = () => {
+    let w = work(require.resolve('./worker.js'))
+    w.addEventListener('message', event => {
+      console.log(event.data)
+    })
+    w.postMessage({ startStream: true })
+  }
 
   return (
     <button onClick={startLiveUpdatesActionHandler}>Start live updates</button>
   )
 }
- 
