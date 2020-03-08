@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        CSS.paintWorklet.addModule('checkboardWorklet.js');
+    </script>
     <style>
         .error-class {
             background: red;
         }
+
         .process-speech {
             background-color: #fff;
             -webkit-animation: random 5s infinite;
@@ -36,7 +40,22 @@
                 background-color: white;
             }
         }
+
+        :root {
+            --bubble-size: 100;
+            --bubble-color: "green"
+        }
+
+        @supports (background: paint(id)) {
+            body {
+                --bubble-size: 20;
+                --bubble-color: green;
+                background-image: paint(checkerboard);
+            }
+        }
     </style>
+
+
 </head>
 
 <body>
