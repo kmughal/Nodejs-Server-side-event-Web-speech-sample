@@ -26,3 +26,4 @@ CMD [ "npm", "start" ]
 
 #docker build -t liveupdateclient:latest .
 #docker container run --name liveupdateclient -p 3000:3000 liveupdateclient:latest
+# docker container run --name [container-name] --env PORT=8500 -p 8500:8500 [image:tag-name]
