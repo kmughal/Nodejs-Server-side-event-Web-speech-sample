@@ -6,7 +6,7 @@ const { addRoutes } = require('./routes')
 
 applyMiddlewares(app)
 addRoutes(app)
-
-app.listen(9300, () => {
-  console.log('connected')
+const portNumber = process.env.PORT || 9300
+app.listen(portNumber, () => {
+  console.log('connected : ' , portNumber)
 })
