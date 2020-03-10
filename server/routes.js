@@ -5,11 +5,19 @@ exports.addRoutes = app => {
   if (app.get) {
     app.get('/bus', getMockJson)
     app.get('/live-bus-status', liveBusStatus)
+    app.get('/api/minutes', addStaleCacheResponse)
     app.get('*', helloWorldTextMessage)
   }
 }
 
+function addStaleCacheResponse (req, res) {
+  res.append('Cache-Control', 'max-age=1, stale-while-revalidate=59')
+  const minutes = new Date().getMinutes()
+  res.send({ minutes })
+}
+
 function helloWorldTextMessage (_, res) {
+  res.append('Cache-Control', 'max-age=1, stale-while-revalidate=59')
   res.status(200).send('hello world')
 }
 
