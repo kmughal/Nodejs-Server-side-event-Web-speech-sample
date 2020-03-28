@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
-    "test" : "jest"
+    "test": "jest"
   },
-  "jest" : {
+  "jest": {
     "verbose": true
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reach/accordion": "^0.9.1",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-scripts": "^3.4.0",
