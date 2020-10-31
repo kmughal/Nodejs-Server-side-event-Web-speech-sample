@@ -1,6 +1,7 @@
 # Introduction
 
-A sample code to test 
+This is a sample code using Web speech api. There is a server and client application. Once the speak ability is enabled this application is able to speak out the live train status! 
+
  - Web speech api
  - Server side events using Node js
 
